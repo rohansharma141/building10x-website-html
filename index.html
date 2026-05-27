@@ -457,6 +457,17 @@
   .savings .sv-big{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.1rem;letter-spacing:-.02em;color:var(--accent);line-height:1}
   .savings .sv-sub{font-size:.86rem;color:var(--ink-dim);margin-top:6px}
   .savings .sv-sub b{color:var(--ink)}
+  .ttm{border:1px solid var(--line-bright);border-radius:13px;padding:16px 18px;background:color-mix(in srgb,var(--bg-soft) 50%,var(--panel))}
+  .ttm-row{display:grid;grid-template-columns:120px 56px 1fr;align-items:center;gap:12px;margin-bottom:11px}
+  .ttm-row:last-of-type{margin-bottom:0}
+  .ttm-name{font-size:.82rem;color:var(--ink-dim)}
+  .ttm-weeks{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--ink);text-align:right}
+  .ttm-weeks.accent{color:var(--accent)}
+  .ttm-track{height:8px;border-radius:5px;background:var(--line);overflow:hidden}
+  .ttm-fill{display:block;height:100%;border-radius:5px;transition:width .7s cubic-bezier(.16,1,.3,1)}
+  .ttm-fill.trad{background:var(--ink-faint)}
+  .ttm-fill.b10x{background:linear-gradient(90deg,var(--accent-deep),var(--accent))}
+  .ttm-note{margin-top:13px;padding-top:12px;border-top:1px dashed var(--line-bright);font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--ink-faint);line-height:1.5}
 
   .calc-cta{margin-top:22px;display:flex;gap:10px;align-items:center}
   .calc-cta input[type=email]{flex:1;background:var(--bg);border:1px solid var(--line-bright);border-radius:9px;padding:13px 15px;color:var(--ink);font-family:'Sora',sans-serif;font-size:.9rem;outline:none;transition:border-color .25s}
@@ -960,6 +971,21 @@
               <div class="crow-time" id="b10x-time">— weeks</div>
               <div class="crow-bar"><i id="b10x-bar" style="width:20%"></i></div>
             </div>
+          </div>
+
+          <div class="calc-out-label" style="margin-top:24px">Time to market</div>
+          <div class="ttm">
+            <div class="ttm-row">
+              <span class="ttm-name">Traditional team</span>
+              <span class="ttm-weeks" id="trad-time-w">— wks</span>
+              <span class="ttm-track"><i class="ttm-fill trad" id="trad-tbar" style="width:100%"></i></span>
+            </div>
+            <div class="ttm-row">
+              <span class="ttm-name">Building10X</span>
+              <span class="ttm-weeks accent" id="b10x-time-w">— wks</span>
+              <span class="ttm-track"><i class="ttm-fill b10x" id="b10x-tbar" style="width:18%"></i></span>
+            </div>
+            <div class="ttm-note" id="ttm-note">Reduce the team size below and watch the traditional timeline stretch — fewer people, slower to market.</div>
           </div>
 
           <div class="savings">
@@ -1572,29 +1598,57 @@ function calc(){
   const rate=+document.getElementById('rate').value;
   const team=+document.getElementById('team').value;
   const m=cxMult[cx];
-  // traditional: base scaled by complexity, plus team/rate influence on a person-weeks model
-  const weeksTrad=Math.round(projWeeks*m);
+
+  // --- TRADITIONAL ---
+  // Fixed body of work for the scope (in person-weeks), scaled by complexity.
+  // A baseline "ideal" team of 4 sets the reference timeline (projWeeks).
+  const refTeam=4;
+  const personWeeks=projWeeks*m*refTeam;            // total effort is ~constant for the scope
+  // Calendar time = effort / team, but with diminishing returns:
+  // small teams stretch the timeline; big teams help less than 1:1 (coordination overhead).
+  // effectiveTeam grows slower than headcount -> fewer people = disproportionately longer.
+  const effectiveTeam=Math.pow(team,0.8);            // 2->1.74, 4->3.03, 8->5.28
+  const weeksTrad=Math.max(1,Math.round(personWeeks/effectiveTeam));
   const personDays=weeksTrad*5*team;
   const tradCost=Math.round((personDays*rate)/1000)*1000;
-  // building10x: AI-accelerated — ~1/8 to 1/10 the time, solo+AI, lower effective cost
-  const weeksB10=Math.max(1,Math.round(weeksTrad*0.18));
+
+  // --- BUILDING10X (AI-accelerated, founder-led) ---
+  // Time-to-market is short and (almost) independent of the client's team-size choice,
+  // because delivery isn't gated by headcount. Tiny complexity sensitivity only.
+  const weeksB10=Math.max(1,Math.round(projWeeks*m*0.18));
   const b10Cost=Math.round((projBase*m*0.45)/1000)*1000;
-  // render
+
+  // --- RENDER ---
   document.getElementById('rate-val').textContent='$'+rate+' / day';
   document.getElementById('team-val').textContent=team+' people';
   document.getElementById('trad-cost').textContent=fmtMoney(tradCost);
   document.getElementById('trad-time').textContent=weeksTrad+' weeks · '+team+'-person team';
   document.getElementById('b10x-cost').textContent=fmtMoney(b10Cost);
   document.getElementById('b10x-time').textContent=weeksB10+' weeks · AI-accelerated';
-  // bars (relative to traditional)
+
+  // time-to-market block
+  document.getElementById('trad-time-w').textContent=weeksTrad+' wks';
+  document.getElementById('b10x-time-w').textContent=weeksB10+' wks';
+
+  // time-to-market bars on a SINGLE FIXED SCALE so length always matches week count.
+  // Reference = the longest plausible timeline (biggest project, smallest team), so
+  // bars are comparable across every complexity/team choice. Traditional is no longer
+  // pinned at 100% — it grows/shrinks with its actual weeks.
+  const SCALE_WEEKS=70; // worst-case reference (e.g. complex commerce build, 2-person team)
+  document.getElementById('trad-tbar').style.width=Math.min(100,Math.max(4,(weeksTrad/SCALE_WEEKS)*100))+'%';
+  document.getElementById('b10x-tbar').style.width=Math.min(100,Math.max(4,(weeksB10/SCALE_WEEKS)*100))+'%';
+
+  // cost bars (cost comparison stays relative: traditional is the baseline)
   document.getElementById('trad-bar').style.width='100%';
   document.getElementById('b10x-bar').style.width=Math.max(12,(b10Cost/tradCost)*100)+'%';
-  // savings
+
+  // savings + time-to-market headline
   const save=tradCost-b10Cost;
   const pct=Math.round((save/tradCost)*100);
+  const weeksSaved=weeksTrad-weeksB10;
   const timePct=Math.round((1-weeksB10/weeksTrad)*100);
   document.getElementById('sv-big').textContent=fmtMoney(save)+' saved';
-  document.getElementById('sv-time').textContent=pct+'% lower cost · '+timePct+'% faster';
+  document.getElementById('sv-time').textContent=pct+'% lower cost · '+weeksSaved+' weeks sooner to market ('+timePct+'% faster)';
 }
 // complexity selection (buttons)
 let cxIndex=1;
