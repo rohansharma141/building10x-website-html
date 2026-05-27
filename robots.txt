@@ -1,0 +1,5 @@
+# Building10X — robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://building10x.com/sitemap.xml
