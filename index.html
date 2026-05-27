@@ -87,7 +87,10 @@
     font-family:'Sora',sans-serif; font-weight:300; line-height:1.6;
     -webkit-font-smoothing:antialiased; overflow-x:hidden;
     transition:background .55s ease, color .55s ease;
+    zoom:1.10;                /* enlarge entire page ~10% (like browser zoom) */
   }
+  /* On small screens, don't zoom — phones are already space-constrained */
+  @media(max-width:880px){ body{ zoom:1; } }
   body::before{
     content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
     background-image:
@@ -102,7 +105,7 @@
     background:radial-gradient(ellipse 60% 50% at 78% -8%,var(--accent-glow),transparent 60%);
     transition:background .55s;
   }
-  .wrap{max-width:1320px;margin:0 auto;padding:0 40px;position:relative;z-index:2}
+  .wrap{max-width:1380px;margin:0 auto;padding:0 40px;position:relative;z-index:2}
   .mono{font-family:'JetBrains Mono',monospace}
 
   /* ============ NAV ============ */
@@ -127,6 +130,7 @@
   .nav-re .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 8px var(--accent-2)}
   .nav-cta{background:var(--accent);color:var(--x-text);text-decoration:none;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.86rem;padding:10px 20px;border-radius:8px;transition:all .25s}
   .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 30px var(--accent-glow)}
+  .nav-menu-cta{display:none}
 
   /* THEME TOGGLE */
   .toggle{
@@ -147,7 +151,8 @@
   [data-theme="light"] .toggle .sun{opacity:1}
   .knob svg{width:13px;height:13px;color:var(--x-text)}
 
-  .menu-btn{display:none;background:none;border:none;color:var(--ink);font-size:1.5rem;cursor:pointer}
+  .menu-btn{display:none;background:transparent;border:1px solid var(--line-bright);border-radius:9px;color:var(--ink);font-size:1.4rem;line-height:1;cursor:pointer;width:46px;height:44px;align-items:center;justify-content:center;transition:border-color .25s,color .25s}
+  .menu-btn:hover,.menu-btn:active{border-color:var(--accent);color:var(--accent)}
 
   /* ============ HERO ============ */
   .hero{padding:96px 0 90px;position:relative}
@@ -250,7 +255,10 @@
 
   @media(max-width:880px){
     .hero-grid{grid-template-columns:1fr;gap:48px}
-    .menu-btn{display:block}
+    .menu-btn{display:flex}
+    .nav-right .nav-cta{display:none}           /* hide CTA in top bar to avoid mis-tap; it's in the menu */
+    .nav-right{gap:14px;margin-right:14px}        /* space the toggle away from the hamburger */
+    .nav{gap:10px}
     /* mobile nav as a dropdown panel */
     .nav-links{
       display:flex;position:absolute;top:100%;left:0;right:0;
@@ -264,6 +272,7 @@
     .nav-links a{padding:13px 40px;font-size:1rem}
     .nav-links a::after{display:none}
     .nav-re{margin:8px 40px 0;justify-content:flex-start;width:max-content}
+    .nav-menu-cta{display:block;margin:14px 40px 4px;padding:13px 20px !important;background:var(--accent);color:var(--x-text) !important;border-radius:9px;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600}
     .c-badge{right:8px;top:auto;bottom:-14px}
   }
   @media(max-width:560px){
@@ -664,6 +673,7 @@
           <a href="#ai-automation">AI &amp; Automation</a>
           <a href="#about">About</a>
           <a href="#specializations" class="nav-re"><span class="dot"></span>Real Estate</a>
+          <a href="#contact" class="nav-menu-cta">Start a project ↗</a>
         </div>
         <div class="toggle" id="toggle" role="button" aria-label="Toggle theme">
           <span class="ico moon">🌙</span>
@@ -1124,7 +1134,7 @@
     <div class="work-grid">
       <a href="https://www.homeoagro.com" target="_blank" rel="noopener" class="work-card reveal d1">
         <div class="work-vis">
-          <div class="browser"><div class="bbar"><i></i><i></i><i></i><span class="burl"></span></div><div class="bbody">homeoagro</div></div>
+          <div class="browser"><div class="bbar"><i></i><i></i><i></i><span class="burl"></span></div><div class="bbody">HomeoAgro</div></div>
         </div>
         <div class="work-info">
           <div class="wtag">Web · Agriculture</div>
@@ -1212,8 +1222,8 @@
       <h2>Let's build your next <span class="grad">10×</span>.</h2>
       <p>Have something to build, automate, or grow? Tell me what you're working on — first conversation's free, and you'll talk to the person who'll actually do the work.</p>
 
-      <!-- CONTACT FORM — replace YOUR_FORM_ID with your Formspree form ID (formspree.io → new form) -->
-      <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <!-- CONTACT FORM — Formspree wired (form id: mwvzwznp) -->
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/mwvzwznp" method="POST">
         <div class="cf-row">
           <div class="cf-field">
             <label for="cf-name">Name</label>
@@ -1353,7 +1363,7 @@
         <a href="https://wa.me/919650247027" target="_blank" rel="noopener">WhatsApp · +91 96502 47027</a>
         <a href="#contact">Start a project</a>
         <!-- REPLACE_ME: paste your real LinkedIn URL -->
-        <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/company/building10x" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -1620,7 +1630,7 @@ if(sendBtn)sendBtn.addEventListener('click',async()=>{
   conf.textContent=' Sending…';
   try{
     // REPLACE_ME: same Formspree form ID as the contact form
-    const res=await fetch('https://formspree.io/f/YOUR_FORM_ID',{
+    const res=await fetch('https://formspree.io/f/mwvzwznp',{
       method:'POST',headers:{'Accept':'application/json'},
       body:(()=>{const f=new FormData();f.append('email',em);f.append('_subject','New ROI Calculator lead');f.append('message','ROI estimate request — '+estimate);return f;})()
     });
