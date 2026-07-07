@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Two Days at ICAI's AI Innovation Summit 2026 — Notes on AI in the CA Profession | Building10X</title>
+<meta name="description" content="Reflections from ICAI's AI Innovation Summit 2026 at Bharat Mandapam — why the biggest opportunity for CA firms is workflow-first AI, not the flashiest tool.">
+<meta name="author" content="Rohan Sharma, Building10X">
+<meta name="theme-color" content="#0a0c0e">
+<link rel="canonical" href="https://building10x.com/blog/ais-2026-summit-notes.html">
+
+<!-- Favicon (matches main site) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0c0e'/><text x='50' y='70' font-size='62' font-family='Arial' font-weight='bold' fill='%23bdf84a' text-anchor='middle'>X</text></svg>">
+
+<!-- OpenGraph for LinkedIn/WhatsApp share -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://building10x.com/blog/ais-2026-summit-notes.html">
+<meta property="og:title" content="Two Days at ICAI's AI Innovation Summit 2026 — Notes on AI in the CA Profession">
+<meta property="og:description" content="Why the biggest opportunity for CA firms is workflow-first AI, not the flashiest tool.">
+<meta property="og:site_name" content="Building10X">
+<meta property="og:image" content="https://building10x.com/blog/blog-images/rohan-at-ais-2026.jpg">
+<meta property="og:image:alt" content="Rohan Sharma at ICAI's AI Innovation Summit 2026, Bharat Mandapam, New Delhi.">
+<meta property="article:author" content="Rohan Sharma">
+<meta property="article:section" content="Insights">
+
+<!-- Twitter card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Two Days at ICAI's AI Innovation Summit 2026 — Notes on AI in the CA Profession">
+<meta name="twitter:description" content="Why the biggest opportunity for CA firms is workflow-first AI, not the flashiest tool.">
+<meta name="twitter:image" content="https://building10x.com/blog/blog-images/rohan-at-ais-2026.jpg">
+
+<!-- Article structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Two Days at ICAI's AI Innovation Summit 2026 — and the One Shift Most People Missed",
+  "description": "Reflections from ICAI's AI Innovation Summit 2026 at Bharat Mandapam — why the biggest opportunity for CA firms is workflow-first AI, not the flashiest tool.",
+  "author": { "@type": "Person", "name": "Rohan Sharma", "url": "https://building10x.com" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Building10X",
+    "url": "https://building10x.com"
+  },
+  "image": "https://building10x.com/blog/blog-images/rohan-at-ais-2026.jpg",
+  "mainEntityOfPage": "https://building10x.com/blog/ais-2026-summit-notes.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     THEME TOKENS — matching main site exactly
+  ============================================================ */
+  :root, html[data-theme="dark"] {
+    --bg:#0a0c0e; --bg-soft:#0f1316; --panel:#14191d; --panel-2:#171d22;
+    --line:#1e262c; --line-bright:#2c353b;
+    --ink:#eef2f3; --ink-dim:#9aa6ac; --ink-faint:#7c8890;
+    --accent:#bdf84a; --accent-deep:#8fd400; --accent-2:#4ad6f8;
+    --accent-glow:rgba(189,248,74,.22);
+    --x-text:#0a0c0e;
+    --grid-rgb:255,255,255; --grid-op:.018;
+  }
+  html[data-theme="light"] {
+    --bg:#f4f3ef; --bg-soft:#ffffff; --panel:#ffffff; --panel-2:#fbfbf8;
+    --line:#e8e6df; --line-bright:#d8d5cc;
+    --ink:#16181c; --ink-dim:#5a5d63; --ink-faint:#6b6d67;
+    --accent:#1a6b3c; --accent-deep:#0f4f2a; --accent-2:#c2502a;
+    --accent-glow:rgba(26,107,60,.15);
+    --x-text:#ffffff;
+    --grid-rgb:120,120,120; --grid-op:.035;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'Sora',sans-serif; font-weight:300; line-height:1.6;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+    transition:background .55s ease, color .55s ease;
+    zoom:1.10;
+  }
+  @media(max-width:880px){ body{ zoom:1; } }
+
+  /* Subtle background grid + glow — matches main site */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(var(--grid-rgb),var(--grid-op)) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(var(--grid-rgb),var(--grid-op)) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 80%);
+    transition:opacity .55s;
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background:radial-gradient(ellipse 60% 50% at 78% -8%,var(--accent-glow),transparent 60%);
+    transition:background .55s;
+  }
+
+  .wrap{max-width:1380px;margin:0 auto;padding:0 40px;position:relative;z-index:2}
+
+  /* ============ HEADER / NAV — same as main site ============ */
+  header{
+    position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+    background:color-mix(in srgb,var(--bg) 82%,transparent);
+    border-bottom:1px solid var(--line);transition:all .55s
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+  .brand .mark{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:-.02em;display:flex;align-items:center;color:var(--ink)}
+  .brand .x{color:var(--x-text);background:var(--accent);padding:1px 7px;border-radius:5px;margin-left:1px;box-shadow:0 0 18px var(--accent-glow);font-weight:700;transition:all .55s}
+  .nav-right{display:flex;align-items:center;gap:30px}
+  .nav-links{display:flex;gap:28px}
+  .nav-links a{color:var(--ink-dim);text-decoration:none;font-size:.92rem;font-weight:400;transition:color .25s;position:relative}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{background:var(--accent);color:var(--x-text);text-decoration:none;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.86rem;padding:10px 20px;border-radius:8px;transition:all .25s}
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 30px var(--accent-glow)}
+  .toggle{width:52px;height:26px;border:1px solid var(--line-bright);border-radius:100px;position:relative;cursor:pointer;display:flex;align-items:center;padding:0 4px;background:var(--panel);transition:all .55s}
+  .toggle .ico{font-size:.8rem;line-height:1;opacity:.5;transition:opacity .3s}
+  .toggle .moon{margin-right:auto}
+  .toggle .sun{margin-left:auto}
+  html[data-theme="dark"] .toggle .moon{opacity:1}
+  html[data-theme="light"] .toggle .sun{opacity:1}
+  .toggle::after{content:"";width:18px;height:18px;background:var(--accent);border-radius:50%;position:absolute;top:50%;transform:translateY(-50%);left:4px;transition:left .35s cubic-bezier(.5,0,.2,1),background .55s}
+  html[data-theme="light"] .toggle::after{left:28px}
+  .menu-btn{display:none;background:transparent;border:1px solid var(--line-bright);border-radius:9px;color:var(--ink);font-size:1.4rem;line-height:1;cursor:pointer;width:46px;height:44px;align-items:center;justify-content:center}
+  .menu-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+  @media(max-width:880px){
+    .menu-btn{display:flex}
+    .nav-right .nav-cta{display:none}
+    .nav-right{gap:14px;margin-right:14px}
+    .nav{gap:10px}
+    .nav-links{
+      display:flex;position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:0;
+      background:var(--bg-soft);border-bottom:1px solid var(--line);
+      padding:8px 0;
+      max-height:0;overflow:hidden;opacity:0;pointer-events:none;
+      transition:max-height .35s ease,opacity .3s ease,padding .3s ease;
+    }
+    header.mobile-open .nav-links{max-height:420px;opacity:1;pointer-events:auto;padding:14px 0}
+    .nav-links a{padding:13px 40px;font-size:1rem}
+  }
+
+  /* ============ ARTICLE ============ */
+  .article-wrap{
+    max-width:780px;         /* ideal reading width */
+    margin:0 auto;
+    padding:0 40px;
+    position:relative;
+    z-index:2;
+  }
+  @media(max-width:640px){ .article-wrap{ padding:0 22px } }
+
+  /* Breadcrumb + tag */
+  .article-top{
+    padding:56px 0 20px;
+    max-width:780px;margin:0 auto;padding-left:40px;padding-right:40px;
+  }
+  @media(max-width:640px){ .article-top{ padding-left:22px;padding-right:22px } }
+  .breadcrumb{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-faint);
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  }
+  .breadcrumb a{color:var(--ink-faint);text-decoration:none;transition:color .2s}
+  .breadcrumb a:hover{color:var(--accent)}
+  .breadcrumb .sep{opacity:.4}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);
+    border:1px solid var(--line-bright);border-radius:100px;
+    padding:7px 16px;margin:22px 0 20px;
+    background:color-mix(in srgb,var(--accent) 6%,transparent);
+  }
+
+  /* Article title */
+  h1.article-title{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:clamp(2.1rem,4.2vw,3.5rem);
+    line-height:1.08;
+    letter-spacing:-.025em;
+    margin-bottom:22px;
+    color:var(--ink);
+  }
+
+  /* Deck / subtitle */
+  .article-deck{
+    font-family:'Sora',sans-serif;
+    font-weight:300;
+    font-style:italic;
+    font-size:1.15rem;
+    line-height:1.55;
+    color:var(--ink-dim);
+    margin-bottom:30px;
+    max-width:680px;
+  }
+
+  /* Post meta bar (author / date / read time) */
+  .article-meta{
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    padding:20px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin-bottom:0;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.75rem;color:var(--ink-faint);
+    letter-spacing:.06em;
+  }
+  .article-meta .m-author{color:var(--ink);font-weight:500}
+  .article-meta .m-dot{opacity:.4}
+
+  /* Hero image */
+  .hero-img{
+    margin:44px 0 12px;
+    max-width:1200px;
+    margin-left:auto;margin-right:auto;
+    padding:0 40px;
+    position:relative;z-index:2;
+  }
+  @media(max-width:640px){ .hero-img{ padding:0 22px } }
+  /* Landscape frame that gracefully hosts portrait OR landscape images */
+  .hero-frame{
+    aspect-ratio:16/9;
+    background:var(--panel);
+    border:1px solid var(--line-bright);
+    border-radius:16px;
+    overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .hero-frame::before{
+    /* Blurred image bg fill so portrait shots look intentional, not letterboxed */
+    content:"";
+    position:absolute;inset:0;
+    background-image:var(--hero-bg);
+    background-size:cover;background-position:center;
+    filter:blur(60px) brightness(.5);
+    transform:scale(1.15);
+    opacity:.55;
+  }
+  .hero-frame img{
+    position:relative;z-index:1;
+    max-height:100%;max-width:100%;
+    height:100%;width:auto;
+    object-fit:contain;
+    display:block;
+  }
+  .hero-img .img-slot{
+    aspect-ratio:16/9;
+    background:var(--panel);
+    border:1px dashed var(--line-bright);
+    border-radius:16px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    color:var(--ink-faint);
+    font-family:'JetBrains Mono',monospace;
+    font-size:.78rem;
+    letter-spacing:.05em;
+    overflow:hidden;
+    position:relative;
+  }
+  .hero-img .img-slot .slot-tag{color:var(--accent);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px}
+  .hero-img .img-slot .slot-hint{color:var(--ink-faint);font-size:.7rem;max-width:400px;text-align:center;padding:0 20px;line-height:1.5}
+  .hero-caption{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;color:var(--ink-faint);
+    letter-spacing:.06em;text-align:center;
+    margin-top:12px;padding:0 24px;
+  }
+
+  /* Article body typography */
+  .article-body{
+    padding:36px 0 60px;
+    font-family:'Sora',sans-serif;
+    font-weight:300;
+    font-size:1.1rem;
+    line-height:1.75;
+    color:var(--ink-dim);
+  }
+  .article-body p{
+    margin-bottom:22px;
+  }
+  .article-body p em{color:var(--ink);font-style:italic}
+  .article-body strong{color:var(--ink);font-weight:600}
+  .article-body a{
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid color-mix(in srgb,var(--accent) 40%,transparent);
+    transition:border-color .2s;
+  }
+  .article-body a:hover{border-bottom-color:var(--accent)}
+
+  .article-body h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:clamp(1.6rem,2.6vw,2.05rem);
+    line-height:1.2;
+    letter-spacing:-.02em;
+    color:var(--ink);
+    margin:52px 0 20px;
+  }
+
+  .article-body hr{
+    border:none;
+    border-top:1px solid var(--line);
+    margin:44px 0;
+  }
+
+  /* In-body image slots */
+  .body-img{
+    margin:40px 0;
+  }
+  .body-img .body-frame{
+    aspect-ratio:4/3;
+    background:var(--panel);
+    border:1px solid var(--line-bright);
+    border-radius:14px;
+    overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .body-img .body-frame::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:var(--body-bg);
+    background-size:cover;background-position:center;
+    filter:blur(50px) brightness(.5);
+    transform:scale(1.15);
+    opacity:.5;
+  }
+  .body-img .body-frame img{
+    position:relative;z-index:1;
+    max-height:100%;max-width:100%;
+    height:100%;width:auto;
+    object-fit:contain;
+    display:block;
+  }
+  .body-img .img-slot{
+    aspect-ratio:4/3;
+    background:var(--panel);
+    border:1px dashed var(--line-bright);
+    border-radius:14px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    color:var(--ink-faint);
+    font-family:'JetBrains Mono',monospace;
+    font-size:.78rem;
+    letter-spacing:.05em;
+    padding:20px;
+  }
+  .body-img .img-slot .slot-tag{color:var(--accent);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px}
+  .body-img .img-slot .slot-hint{color:var(--ink-faint);font-size:.72rem;max-width:420px;text-align:center;line-height:1.5}
+  .body-img figcaption{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;color:var(--ink-faint);
+    letter-spacing:.06em;text-align:center;
+    margin-top:12px;
+  }
+
+  /* Pull quote for the key takeaway (the "start where the volume is" line) */
+  .pull{
+    border-left:3px solid var(--accent);
+    padding:6px 0 6px 22px;
+    margin:32px 0;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:500;
+    font-size:1.18rem;
+    line-height:1.5;
+    color:var(--ink);
+    letter-spacing:-.005em;
+  }
+
+  /* Closing CTA block */
+  .cta-block{
+    margin:52px 0 60px;
+    padding:38px 34px;
+    background:var(--panel);
+    border:1px solid var(--line-bright);
+    border-radius:16px;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-block::before{
+    content:"";position:absolute;top:-40%;right:-20%;width:60%;height:200%;
+    background:radial-gradient(ellipse 50% 40% at center,var(--accent-glow),transparent 65%);
+    pointer-events:none;opacity:.6;
+  }
+  .cta-block p{
+    font-family:'Sora',sans-serif;font-style:italic;font-weight:400;
+    color:var(--ink-dim);font-size:1.02rem;line-height:1.7;margin-bottom:18px;
+    position:relative;z-index:1;
+  }
+  .cta-block p strong{color:var(--ink);font-style:normal}
+  .cta-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--accent);color:var(--x-text);
+    text-decoration:none;
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.95rem;
+    padding:13px 24px;border-radius:9px;
+    transition:transform .2s,box-shadow .3s;
+    position:relative;z-index:1;
+  }
+  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px var(--accent-glow)}
+  .cta-btn .arr{font-size:1rem}
+
+  /* Back-to-blog / next */
+  .article-nav{
+    padding:24px 0 48px;
+    display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+    border-top:1px solid var(--line);
+  }
+  .article-nav a{
+    color:var(--ink-dim);text-decoration:none;
+    font-family:'JetBrains Mono',monospace;font-size:.78rem;
+    letter-spacing:.08em;text-transform:uppercase;
+    transition:color .25s;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .article-nav a:hover{color:var(--accent)}
+
+  /* Footer (same styling family as main site, simplified) */
+  footer{
+    border-top:1px solid var(--line);
+    padding:44px 0 28px;
+    margin-top:0;
+  }
+  .foot-inner{
+    display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;
+    color:var(--ink-faint);letter-spacing:.06em;
+  }
+  .foot-inner a{color:var(--ink-faint);text-decoration:none;transition:color .2s}
+  .foot-inner a:hover{color:var(--accent)}
+  .foot-links{display:flex;gap:22px}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <a href="/" class="brand"><span class="mark">Building10<span class="x">X</span></span></a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="/#solutions">Solutions</a>
+          <a href="/#pricing">Pricing</a>
+          <a href="/#work">Work</a>
+          <a href="/#ai-automation">AI &amp; Automation</a>
+          <a href="/#about">About</a>
+          <a href="/#contact" class="nav-menu-cta">Start a project ↗</a>
+        </div>
+        <div class="toggle" id="toggle" role="button" aria-label="Toggle theme">
+          <span class="ico moon">🌙</span>
+          <span class="ico sun">☀️</span>
+        </div>
+        <a href="/#contact" class="nav-cta">Start a project</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">≡</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ARTICLE HEAD ============ -->
+<div class="article-top">
+  <div class="breadcrumb">
+    <a href="/">Building10X</a>
+    <span class="sep">/</span>
+    <a href="/#insights">Insights</a>
+    <span class="sep">/</span>
+    <span>ICAI AI Summit 2026</span>
+  </div>
+  <div class="eyebrow">◉ Field notes · AI in the CA profession</div>
+  <h1 class="article-title">Two Days at ICAI's AI Innovation Summit — and the One Shift Most People Missed</h1>
+  <p class="article-deck">
+    Notes from the AI Innovation Summit 2026 at Bharat Mandapam, and why the most important change happening in the profession isn't the one everyone was talking about.
+  </p>
+  <div class="article-meta">
+    <span class="m-author">Rohan Sharma</span>
+    <span class="m-dot">·</span>
+    <span>Founder, Building10X</span>
+    <span class="m-dot">·</span>
+    <span>ICAI Summit 2026</span>
+    <span class="m-dot">·</span>
+    <span>7 min read</span>
+  </div>
+</div>
+
+<!-- ============ HERO IMAGE ============ -->
+<div class="hero-img">
+  <div class="hero-frame" style="--hero-bg:url('./blog-images/rohan-at-ais-2026.jpg')">
+    <img src="./blog-images/rohan-at-ais-2026.jpg" alt="Rohan Sharma at ICAI's AI Innovation Summit 2026, standing beside the AiS 2026 backdrop at Bharat Mandapam, New Delhi.">
+  </div>
+</div>
+
+<!-- ============ BODY ============ -->
+<div class="article-wrap">
+  <article class="article-body">
+
+    <p>I spent two days this week at Bharat Mandapam for ICAI's AI Innovation Summit. Two full days of keynotes, demos, hallway conversations, and more "AI-powered" banners than I could count.</p>
+
+    <p>Here's the honest takeaway, and it surprised me: the profession isn't resisting AI. That old story — accountants as reluctant technology adopters — is out of date. The room was leaning in. Partners from firms of every size were asking sharp questions, booking demos, and genuinely trying to figure out where this fits. That energy is real, and it matters.</p>
+
+    <p>But underneath the energy, I noticed a gap. And it's the gap that will decide which firms actually benefit from the next few years, and which ones just spend money.</p>
+
+    <h2>"AI" the label vs. AI the workflow</h2>
+
+    <p>Walk any exhibition floor right now and almost everything wears the same badge. Rule-based automation? AI. A macro that moves data between two systems? AI. A dashboard with a chatbot bolted on? Also AI.</p>
+
+    <p>Some of it is the real thing. A lot of it isn't — it's automation that's existed for years, rebranded for the moment. That's not a criticism of the vendors so much as an observation about the noise. When everything is labeled the same way, the label stops telling you anything useful.</p>
+
+    <p>The firms that will win aren't the ones who buy the flashiest tool on the floor. They're the ones who can tell the difference — and who start from a completely different question.</p>
+
+    <h2>The better first question</h2>
+
+    <p>Most conversations at the summit started with the tool. <em>"What does your product do?"</em></p>
+
+    <p>The more useful question runs the other way: <em>"Where does the repetitive, high-volume work actually sit in your firm — and what would it be worth to take 60% of it off your team's plate?"</em></p>
+
+    <p>That's a workflow question, not a product question. And it changes everything downstream. Once you can see the workflow clearly, the right tool becomes obvious — or you find out you don't need a new tool at all, just a better sequence.</p>
+
+    <!-- IN-BODY IMAGE SLOT #1 -->
+    <figure class="body-img">
+      <div class="body-frame" style="--body-bg:url('./blog-images/ais-2026-session.jpg')">
+        <img src="./blog-images/ais-2026-session.jpg" alt="A keynote session at ICAI's AI Innovation Summit 2026, with a slide reading '3 Steps for Leveraging AI (as a non-tech person)' — Ask Better Questions and Data Privacy — visible behind the speaker, with a full audience of Chartered Accountants at Bharat Mandapam.">
+      </div>
+      <figcaption>A keynote in progress — the room was packed, and the framing of AI as "non-tech first" set the tone for the day.</figcaption>
+    </figure>
+
+    <h2>The unglamorous truth about leverage</h2>
+
+    <p>Here's the part almost nobody puts on a keynote slide, because it doesn't sound impressive.</p>
+
+    <p>The highest-leverage place to apply AI in most accounting workflows is boring. It's document extraction — pulling clean, structured data out of the mountain of PDFs, scans, and statements that clients send in every form except the one you need. It's cleaning up the plumbing: the Tally exports, the reconciliations, the data that arrives in fourteen slightly-different shapes.</p>
+
+    <p>The impressive-sounding use cases — "AI that interprets tax treaties," "AI that does your audit" — make for great demos and terrible first projects. They're where the risk is highest and the accuracy is lowest. The boring stuff is where the hours actually go, and where a well-scoped tool pays for itself in weeks.</p>
+
+    <p>If I could hand every firm one takeaway from those two days, it would be this:</p>
+
+    <blockquote class="pull">Start where the volume is, not where the marketing is.</blockquote>
+
+    <h2>Why I go in as an outsider</h2>
+
+    <p>I don't come from a CA background, and at an event like this that sounds like a disadvantage. I've come to see it as the opposite.</p>
+
+    <p>Because I'm not steeped in how the work has always been done, I look at a firm's process the way a systems person does — as a set of workflows with inputs, bottlenecks, and repeated steps. I'm not there to sell a product or to prove I know tax better than a partner who's done it for twenty years. I'm there to map what's actually happening and find the two or three places where AI does real work.</p>
+
+    <p>That's the entire philosophy behind Building10X, and two days at Bharat Mandapam only sharpened my conviction in it.</p>
+
+    <h2>Where this leaves the profession</h2>
+
+    <p>Optimistic, is the short version. The appetite is there. The talent is there. What's missing — and what the noise on the exhibition floor obscures — is a calmer, more deliberate way of adopting this stuff. Map the workflow. Find the high-volume, repetitive task. Prove the value on a small, measurable slice before anyone signs anything big.</p>
+
+    <p>The firms that move that way won't have the most tools. They'll have the most leverage. And in a profession built on hours, leverage is the whole game.</p>
+
+    <!-- ============ CTA BLOCK ============ -->
+    <div class="cta-block">
+      <p>
+        I write these notes as a builder — not a vendor. I run <strong>Building10X</strong>, where I help businesses adopt AI the deliberate way: by starting with workflows, not product pitches. If any of this rhymed with what you're thinking about — in your firm or in your business — I'd like to hear it.
+      </p>
+      <a href="/#contact" class="cta-btn">Start a conversation <span class="arr">↗</span></a>
+    </div>
+
+  </article>
+
+  <!-- ============ ARTICLE NAV ============ -->
+  <div class="article-nav">
+    <a href="/#insights">← Back to Insights</a>
+    <a href="/#contact">Start a conversation →</a>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>© 2026 Building10X · Built to grow.</div>
+      <div class="foot-links">
+        <a href="/">Home</a>
+        <a href="/#solutions">Solutions</a>
+        <a href="/#work">Work</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Theme toggle
+  const html = document.documentElement;
+  const toggle = document.getElementById('toggle');
+  // Read saved theme (falls back to dark)
+  const saved = (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) || 'dark';
+  html.setAttribute('data-theme', saved);
+  toggle.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e) {}
+  });
+
+  // Mobile menu
+  const header = document.querySelector('header');
+  const menuBtn = document.getElementById('menuBtn');
+  if (menuBtn) menuBtn.addEventListener('click', () => {
+    header.classList.toggle('mobile-open');
+    menuBtn.textContent = header.classList.contains('mobile-open') ? '×' : '≡';
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      header.classList.remove('mobile-open');
+      if (menuBtn) menuBtn.textContent = '≡';
+    });
+  });
+</script>
+
+</body>
+</html>
