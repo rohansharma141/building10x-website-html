@@ -230,6 +230,11 @@
     transition:border-color .2s;
   }
   .article-body a:hover{border-bottom-color:var(--accent)}
+  /* Buttons inside the article body must not inherit the green text-link styling */
+  .article-body a.cta-btn,.article-body a.cta-btn:hover{color:var(--x-text);border-bottom:none}
+  .article-body a.share-btn{color:var(--ink-dim);border-bottom:none}
+  .article-body a.share-btn:hover{color:var(--ink);border-bottom:none}
+  .article-body a.share-btn.linkedin,.article-body a.share-btn.linkedin:hover{color:#fff}
   .article-body h2{
     font-family:'Space Grotesk',sans-serif;font-weight:600;
     font-size:clamp(1.6rem,2.6vw,2.05rem);line-height:1.2;letter-spacing:-.02em;
@@ -436,14 +441,6 @@
 
     <p><strong>Decision debugging.</strong> Ashok Krish from TCS put it best — engineering has always been about debugging code. Agentic systems require debugging <em>decisions</em>. The transaction succeeded, but was the judgement right? That's a fundamentally different observability problem.</p>
 
-    <!-- IMAGE 3 — Similarity Search / AI Functions technical slide -->
-    <figure class="body-img">
-      <div class="body-frame" style="--body-bg:url('./blog-images-gcs/similarity-search-sql.jpg')">
-        <img src="./blog-images-gcs/similarity-search-sql.jpg" alt="Session slide titled 'Similarity Search and AI Functions' showing SQL that uses google_ml.text_embedding and AI.IF() to match a user's natural-language wardrobe query against structured product data.">
-      </div>
-      <figcaption>A recurring pattern across sessions: grounding is SQL-shaped. Embeddings, similarity search, and AI-in-the-WHERE-clause replacing brittle prompt chains.</figcaption>
-    </figure>
-
     <h2>Notable Demonstrations</h2>
 
     <p><strong>Swiss Property Search</strong> by Kartik Narula and Hardik Gupta showcased how a natural-language real estate query gets grounded through schema ontology, converted to safe SQL, and executed across AlloyDB — with the agent's reasoning fully visible. As someone building in the same space, this was the closest analog to what we're working on.</p>
@@ -456,10 +453,10 @@
 
     <!-- IMAGE 4 — Swiss Property Search demo screen -->
     <figure class="body-img">
-      <div class="body-frame" style="--body-bg:url('./blog-images-gcs/swiss-property-search-demo.png')">
-        <img src="./blog-images-gcs/swiss-property-search-demo.png" alt="Swiss Property Search demo interface at Google Cloud Summit, showing a natural-language query being converted into generated SQL for AlloyDB — 'Show me family apartments in Zurich with a nice view up to 16k' — with the agent's reasoning and generated SQL visible on screen.">
+      <div class="body-frame" style="--body-bg:url('./blog-images-gcs/swiss-property-search-demo.jpg')">
+        <img src="./blog-images-gcs/swiss-property-search-demo.jpg" alt="Swiss Property Search demo screen at Google Cloud Summit, showing a natural-language query — 'Show me family apartments in Zurich with a nice view up to 16k' — converted into generated SQL for AlloyDB using embeddings and semantic similarity, with the agent's reasoning visible on screen.">
       </div>
-      <figcaption>Swiss Property Search — natural-language in, safe grounded SQL out. The reasoning trace is a feature, not a debug tool.</figcaption>
+      <figcaption>Swiss Property Search — natural-language in, safe grounded SQL out. Grounding is SQL-shaped: embeddings and semantic similarity in the WHERE clause, not brittle prompt chains.</figcaption>
     </figure>
 
     <h2>The Gap Nobody Talks About</h2>
