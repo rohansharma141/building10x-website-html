@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Terms &amp; Conditions — Building10X</title>
+<meta name="description" content="The terms that govern your use of building10x.com and the baseline terms for working with Building10X.">
+<meta name="theme-color" content="#0a0c0e">
+<link rel="canonical" href="https://building10x.com/terms.html">
+<script>
+  try{document.documentElement.dataset.theme=localStorage.getItem('theme')||'dark';}catch(e){}
+</script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0c0e'/><text x='50' y='70' font-size='62' font-family='Arial' font-weight='bold' fill='%23bdf84a' text-anchor='middle'>X</text></svg>">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+  :root, html[data-theme="dark"] {
+    --bg:#0a0c0e; --bg-soft:#0f1316; --panel:#14191d;
+    --line:#1e262c; --line-bright:#2c353b;
+    --ink:#eef2f3; --ink-dim:#9aa6ac; --ink-faint:#7c8890;
+    --accent:#bdf84a; --accent-glow:rgba(189,248,74,.22); --x-text:#0a0c0e;
+    --grid-rgb:255,255,255; --grid-op:.018;
+  }
+  html[data-theme="light"] {
+    --bg:#f4f3ef; --bg-soft:#ffffff; --panel:#ffffff;
+    --line:#e8e6df; --line-bright:#d8d5cc;
+    --ink:#16181c; --ink-dim:#5a5d63; --ink-faint:#6b6d67;
+    --accent:#1a6b3c; --accent-glow:rgba(26,107,60,.15); --x-text:#ffffff;
+    --grid-rgb:120,120,120; --grid-op:.035;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:'Sora',sans-serif;font-weight:300;line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    transition:background .55s ease,color .55s ease;
+    zoom:1.10;
+  }
+  @media(max-width:880px){ body{ zoom:1; } }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(var(--grid-rgb),var(--grid-op)) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(var(--grid-rgb),var(--grid-op)) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 80%);
+  }
+  .wrap{max-width:1380px;margin:0 auto;padding:0 40px;position:relative;z-index:2}
+
+  header{
+    position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+    background:color-mix(in srgb,var(--bg) 82%,transparent);
+    border-bottom:1px solid var(--line);transition:all .55s
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+  .brand .mark{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:-.02em;display:flex;align-items:center;color:var(--ink)}
+  .brand .x{color:var(--x-text);background:var(--accent);padding:1px 7px;border-radius:5px;margin-left:1px;box-shadow:0 0 18px var(--accent-glow);font-weight:700;transition:all .55s}
+  .nav-right{display:flex;align-items:center;gap:30px}
+  .nav-links{display:flex;gap:28px}
+  .nav-links a{color:var(--ink-dim);text-decoration:none;font-size:.92rem;font-weight:400;transition:color .25s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{background:var(--accent);color:var(--x-text);text-decoration:none;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.86rem;padding:10px 20px;border-radius:8px;transition:all .25s}
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 30px var(--accent-glow)}
+  .toggle{width:52px;height:26px;border:1px solid var(--line-bright);border-radius:100px;position:relative;cursor:pointer;display:flex;align-items:center;padding:0 4px;background:var(--panel);transition:all .55s}
+  .toggle .ico{font-size:.8rem;line-height:1;opacity:.5;transition:opacity .3s}
+  .toggle .moon{margin-right:auto}
+  .toggle .sun{margin-left:auto}
+  html[data-theme="dark"] .toggle .moon{opacity:1}
+  html[data-theme="light"] .toggle .sun{opacity:1}
+  .toggle::after{content:"";width:18px;height:18px;background:var(--accent);border-radius:50%;position:absolute;top:50%;transform:translateY(-50%);left:4px;transition:left .35s cubic-bezier(.5,0,.2,1),background .55s}
+  html[data-theme="light"] .toggle::after{left:28px}
+  .menu-btn{display:none;background:transparent;border:1px solid var(--line-bright);border-radius:9px;color:var(--ink);font-size:1.4rem;line-height:1;cursor:pointer;width:46px;height:44px;align-items:center;justify-content:center}
+  @media(max-width:880px){
+    .menu-btn{display:flex}
+    .nav-right .nav-cta{display:none}
+    .nav-right{gap:14px;margin-right:14px}
+    .nav-links{
+      display:flex;position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:0;
+      background:var(--bg-soft);border-bottom:1px solid var(--line);
+      padding:8px 0;max-height:0;overflow:hidden;opacity:0;pointer-events:none;
+      transition:max-height .35s ease,opacity .3s ease,padding .3s ease;
+    }
+    header.mobile-open .nav-links{max-height:520px;opacity:1;pointer-events:auto;padding:14px 0}
+    .nav-links a{padding:13px 40px;font-size:1rem}
+  }
+
+  .article-wrap{max-width:780px;margin:0 auto;padding:0 40px;position:relative;z-index:2}
+  @media(max-width:640px){ .article-wrap{ padding:0 22px } }
+  .article-top{padding:56px 0 8px}
+  .breadcrumb{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-faint);display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:22px;
+  }
+  .breadcrumb a{color:var(--ink-faint);text-decoration:none;transition:color .2s}
+  .breadcrumb a:hover{color:var(--accent)}
+  .breadcrumb .sep{opacity:.4}
+  h1{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-.02em;margin-bottom:14px;
+  }
+  .updated{
+    font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--ink-faint);
+    letter-spacing:.06em;padding-bottom:26px;border-bottom:1px solid var(--line);
+  }
+  .article-body{padding:34px 0 60px;font-size:1.02rem;line-height:1.75;color:var(--ink-dim)}
+  .article-body p{margin-bottom:18px}
+  .article-body strong{color:var(--ink);font-weight:600}
+  .article-body a{color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 40%,transparent)}
+  .article-body h2{
+    font-family:'Space Grotesk',sans-serif;font-weight:600;
+    font-size:1.45rem;line-height:1.25;letter-spacing:-.015em;
+    color:var(--ink);margin:40px 0 14px;
+  }
+  .article-body ul{margin:0 0 18px;padding-left:0;list-style:none}
+  .article-body ul li{position:relative;padding-left:26px;margin-bottom:8px}
+  .article-body ul li::before{
+    content:"";position:absolute;left:0;top:13px;width:12px;height:2px;
+    background:var(--accent);border-radius:2px;
+  }
+  .article-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.92rem}
+  .article-body th,.article-body td{text-align:left;padding:10px 12px;border:1px solid var(--line-bright);vertical-align:top}
+  .article-body th{color:var(--ink);font-family:'Space Grotesk',sans-serif;font-weight:600;background:var(--panel)}
+  .tbl-scroll{overflow-x:auto;margin-bottom:4px}
+
+  footer{border-top:1px solid var(--line);padding:44px 0 28px}
+  .foot-inner{
+    display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;
+    color:var(--ink-faint);letter-spacing:.06em;
+  }
+  .foot-inner a{color:var(--ink-faint);text-decoration:none;transition:color .2s}
+  .foot-inner a:hover{color:var(--accent)}
+  .foot-links{display:flex;gap:22px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <a href="/" class="brand"><span class="mark">Building10<span class="x">X</span></span></a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="/#solutions">Solutions</a>
+          <a href="/#pricing">Pricing</a>
+          <a href="/#work">Work</a>
+          <a href="/blog/">Insights</a>
+          <a href="/#about">About</a>
+          <a href="/#contact" class="nav-menu-cta">Start a project ↗</a>
+        </div>
+        <div class="toggle" id="toggle" role="button" tabindex="0" aria-label="Toggle theme">
+          <span class="ico moon">🌙</span>
+          <span class="ico sun">☀️</span>
+        </div>
+        <a href="/#contact" class="nav-cta">Start a project</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">≡</button>
+    </div>
+  </div>
+</header>
+
+<div class="article-wrap">
+  <div class="article-top">
+    <div class="breadcrumb">
+      <a href="/">Building10X</a>
+      <span class="sep">/</span>
+      <span>Terms &amp; Conditions</span>
+    </div>
+    <h1>Terms &amp; Conditions</h1>
+    <div class="updated">Effective date: 8 July 2026</div>
+  </div>
+
+  <div class="article-body">
+
+    <h2>1. Who we are &amp; agreement to these terms</h2>
+    <p><strong>Building10X</strong> is a software and growth studio operated as a sole proprietorship by <strong>Rohan Sharma</strong>, New Delhi, India ("Building10X", "we", "us"). By using <strong>building10x.com</strong> (the "Site"), you agree to these terms. If you don't agree, please don't use the Site.</p>
+
+    <h2>2. Using the Site</h2>
+    <p>The Site and its content are provided for general information about our services. You agree not to misuse the Site — including attempting to disrupt it, scraping it at scale, submitting unlawful or malicious content through our forms, or using it in a way that infringes anyone's rights.</p>
+
+    <h2>3. Estimates, pricing and the ROI calculator</h2>
+    <p>Prices shown on the Site (including package prices and anything produced by the ROI calculator) are <strong>indicative only</strong> and do not constitute an offer. Every real engagement is scoped individually, and only a written quote or proposal we issue — accepted by you — is binding. Calculator outputs are simplified illustrations, not a promise of cost, timeline or outcome.</p>
+
+    <h2>4. Engagements</h2>
+    <p>Client work is governed by the written scope, proposal or agreement for that engagement. If there is any conflict between such an agreement and these terms, the engagement agreement wins. In the absence of specific terms, the relevant sections below (intellectual property, liability) apply as the default baseline.</p>
+
+    <h2>5. Payment</h2>
+    <p>Fees, milestones and payment schedules are set out in the applicable quote or invoice. Unless agreed otherwise, invoices are payable as stated on the invoice, and work may be paused on materially overdue accounts after reasonable notice.</p>
+
+    <h2>6. Intellectual property</h2>
+    <ul>
+      <li><strong>Site content</strong> — the text, design and branding of this Site belong to Building10X. Don't reuse them without permission.</li>
+      <li><strong>Client deliverables</strong> — unless agreed otherwise in writing, you own the bespoke deliverables we build for you once they are paid for in full.</li>
+      <li><strong>Our toolkit</strong> — pre-existing tools, libraries, templates and know-how we bring to a project remain ours; you receive a licence to use them as part of your deliverables.</li>
+      <li><strong>Portfolio</strong> — we may reference completed work (name, description, screenshots) in our portfolio unless you ask us not to in writing.</li>
+    </ul>
+
+    <h2>7. Third-party services</h2>
+    <p>The Site links to and relies on third-party services (for example Formspree for form handling, WhatsApp and LinkedIn for contact). Your use of those services is governed by their own terms and policies. See our <a href="/privacy.html">Privacy Policy</a> for how form data is handled.</p>
+
+    <h2>8. Disclaimers</h2>
+    <p>The Site is provided <strong>"as is"</strong>. We work hard to keep it accurate and available, but we don't warrant that it will be uninterrupted, error-free, or that its content is complete or current. Content on the Site (including blog posts) is general commentary, not professional advice for your specific situation.</p>
+
+    <h2>9. Limitation of liability</h2>
+    <p>To the maximum extent permitted by law: (a) we are not liable for indirect, incidental or consequential losses arising from your use of the Site; and (b) for any engagement, our total aggregate liability is limited to the fees you actually paid us for that engagement. Nothing in these terms excludes liability that cannot lawfully be excluded.</p>
+
+    <h2>10. Changes</h2>
+    <p>We may update these terms from time to time. The version on this page, with its effective date, is the one that applies. Continued use of the Site after changes means you accept the updated terms.</p>
+
+    <h2>11. Governing law &amp; disputes</h2>
+    <p>These terms are governed by the laws of <strong>India</strong>, and the courts of <strong>New Delhi</strong> have exclusive jurisdiction over any dispute relating to them or to the Site.</p>
+
+    <h2>12. Contact</h2>
+    <p>Questions about these terms: <a href="mailto:hello@building10x.com">hello@building10x.com</a> — Building10X (Rohan Sharma), New Delhi, India.</p>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>© 2026 Building10X · Built to grow.</div>
+      <div class="foot-links">
+        <a href="/">Home</a>
+        <a href="/blog/">Insights</a>
+        <a href="/#contact">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const html = document.documentElement;
+  const toggle = document.getElementById('toggle');
+  toggle.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e) {}
+  });
+  toggle.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle.click(); }
+  });
+  const header = document.querySelector('header');
+  const menuBtn = document.getElementById('menuBtn');
+  if (menuBtn) menuBtn.addEventListener('click', () => {
+    header.classList.toggle('mobile-open');
+    menuBtn.textContent = header.classList.contains('mobile-open') ? '×' : '≡';
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      header.classList.remove('mobile-open');
+      if (menuBtn) menuBtn.textContent = '≡';
+    });
+  });
+</script>
+
+</body>
+</html>
