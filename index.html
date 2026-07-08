@@ -451,7 +451,14 @@
   .calc{display:grid;grid-template-columns:1fr 1.05fr;gap:0;border:1px solid var(--line-bright);border-radius:18px;overflow:hidden;background:var(--panel);transition:all .55s}
   .calc-inputs{padding:38px 36px;border-right:1px solid var(--line);transition:border-color .55s}
   .calc-out{padding:38px 36px;background:color-mix(in srgb,var(--bg-soft) 50%,var(--panel));position:relative;transition:background .55s}
-  .calc-h{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:22px}
+  .calc-h{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  /* Currency (₹/$) segmented switch — shared by calculator + pricing */
+  .cur-switch{display:inline-flex;border:1px solid var(--line-bright);border-radius:100px;padding:3px;gap:2px;background:var(--panel)}
+  .cur-switch button{border:none;background:transparent;color:var(--ink-dim);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.06em;padding:6px 14px;border-radius:100px;cursor:pointer;transition:all .25s}
+  .cur-switch button.on{background:var(--accent);color:var(--x-text);font-weight:600}
+  .cur-switch button:hover:not(.on){color:var(--ink)}
+  .sec-head .cur-switch{margin-top:18px}
   .field{margin-bottom:24px}
   .field label{display:flex;align-items:center;justify-content:space-between;font-size:.9rem;color:var(--ink-dim);margin-bottom:11px;font-weight:400}
   .field label b{font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:500}
@@ -948,7 +955,12 @@
     <div class="tool-panel on" id="panel-calc">
       <div class="calc reveal d2">
         <div class="calc-inputs">
-          <div class="calc-h">// configure your build</div>
+          <div class="calc-h">// configure your build
+            <span class="cur-switch" role="group" aria-label="Currency">
+              <button type="button" data-cur="USD">$ USD</button>
+              <button type="button" data-cur="INR">₹ INR</button>
+            </span>
+          </div>
 
           <div class="field">
             <label>What do you want built?</label>
@@ -1026,7 +1038,7 @@
             <input type="email" id="calc-email" placeholder="you@company.com (optional)">
             <button id="calc-send">Send me my estimate →</button>
           </div>
-          <div class="calc-disc">Indicative only — real scope varies. Drop your email and I'll personally send a tailored estimate and answer any questions. No spam, ever. <span id="calc-conf" style="color:var(--accent)"></span></div>
+          <div class="calc-disc">Indicative only — real scope varies. Drop your email and I'll personally send a tailored estimate and answer any questions. No spam, ever. <span class="fx-note"></span> <span id="calc-conf" style="color:var(--accent)"></span></div>
         </div>
       </div>
     </div>
@@ -1129,12 +1141,16 @@
       <span class="sec-tag">Pricing</span>
       <h2 class="sec-title">Clear pricing. No surprises.</h2>
       <p class="sec-intro">Transparent packages for websites &amp; local businesses. Bigger or custom builds are scoped individually — let's talk.</p>
+      <span class="cur-switch" role="group" aria-label="Currency">
+        <button type="button" data-cur="USD">$ USD</button>
+        <button type="button" data-cur="INR">₹ INR</button>
+      </span>
     </div>
     <div class="price-grid">
       <div class="price reveal d1">
         <div class="p-name">Starter Website</div>
         <div class="p-desc">A clean, fast, professional site for a small business or practice.</div>
-        <div class="p-amount"><span class="p-from">from</span>₹20,000</div>
+        <div class="p-amount"><span class="p-from">from</span><span class="p-num" data-inr="20000">₹20,000</span></div>
         <div class="p-period">one-time · live in days</div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Up to 5 sections, mobile-ready</li>
@@ -1148,7 +1164,7 @@
         <div class="pf-tag">Most popular</div>
         <div class="p-name">Business + Growth</div>
         <div class="p-desc">A bigger site plus the automation &amp; digital presence to actually pull in customers.</div>
-        <div class="p-amount"><span class="p-from">from</span>₹45,000</div>
+        <div class="p-amount"><span class="p-from">from</span><span class="p-num" data-inr="45000">₹45,000</span></div>
         <div class="p-period">one-time · + optional monthly</div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Everything in Starter, expanded</li>
@@ -1172,7 +1188,7 @@
         <a href="#contact" class="p-btn ghost">Discuss your project</a>
       </div>
     </div>
-    <div class="price-note">Prices indicative. Final quote depends on scope — you'll get a clear number before any work starts.</div>
+    <div class="price-note">Prices indicative. Final quote depends on scope — you'll get a clear number before any work starts. <span class="fx-note"></span></div>
   </div>
 </section>
 
@@ -1600,7 +1616,20 @@ const cxLabels=['Simple','Standard','Complex'];
 const cxMult=[0.7,1.0,1.5];
 let projBase=55000, projWeeks=20;
 
-function fmtMoney(n){
+/* ---- CURRENCY (indicative FX — update FX_INR when the rate drifts) ---- */
+const FX_INR=95; // indicative ₹ per US$
+let currency='USD';
+try{
+  currency=localStorage.getItem('currency')
+    || (((navigator.language||'').toLowerCase().indexOf('-in')>-1)?'INR':'USD');
+}catch(e){}
+function fmtINR(n){
+  if(n>=1e7) return '₹'+(n/1e7).toFixed(n>=1e8?0:1).replace(/\.0$/,'')+' Cr';
+  if(n>=1e5) return '₹'+(n/1e5).toFixed(1).replace(/\.0$/,'')+' L';
+  return '₹'+Math.round(n).toLocaleString('en-IN');
+}
+function fmtMoney(n){ // n is always USD internally
+  if(currency==='INR') return fmtINR(n*FX_INR);
   if(n>=1000) return '$'+(n/1000).toFixed(n>=100000?0:1).replace(/\.0$/,'')+'k';
   return '$'+Math.round(n);
 }
@@ -1630,7 +1659,7 @@ function calc(){
   const b10Cost=Math.round((projBase*m*0.45)/1000)*1000;
 
   // --- RENDER ---
-  document.getElementById('rate-val').textContent='$'+rate+' / day';
+  document.getElementById('rate-val').textContent=(currency==='INR'?fmtINR(rate*FX_INR):'$'+rate)+' / day';
   document.getElementById('team-val').textContent=team+' people';
   document.getElementById('trad-cost').textContent=fmtMoney(tradCost);
   document.getElementById('trad-time').textContent=weeksTrad+' weeks · '+team+'-person team';
@@ -1691,7 +1720,7 @@ if(sendBtn)sendBtn.addEventListener('click',async()=>{
   const conf=document.getElementById('calc-conf');
   if(!(em && /\S+@\S+\.\S+/.test(em))){conf.textContent=' Enter a valid email to receive it.';return;}
   const proj=document.querySelector('#proj-type .opt.on');
-  const estimate=`Project: ${proj?proj.textContent:'?'} | Traditional: ${document.getElementById('trad-cost').textContent} / ${document.getElementById('trad-time').textContent} | Building10X: ${document.getElementById('b10x-cost').textContent} / ${document.getElementById('b10x-time').textContent} | Saving: ${document.getElementById('sv-big').textContent}`;
+  const estimate=`Project: ${proj?proj.textContent:'?'} | Traditional: ${document.getElementById('trad-cost').textContent} / ${document.getElementById('trad-time').textContent} | Building10X: ${document.getElementById('b10x-cost').textContent} / ${document.getElementById('b10x-time').textContent} | Saving: ${document.getElementById('sv-big').textContent}`+(currency==='INR'?' | (INR at indicative ₹'+FX_INR+'/US$)':'');
   conf.textContent=' Sending…';
   try{
     const res=await fetch('https://formspree.io/f/mwvzwznp',{
@@ -1777,8 +1806,32 @@ document.getElementById('q-retry').addEventListener('click',()=>{
   loadQ();
 });
 
+/* ---- currency switch (calculator + pricing) ---- */
+function renderCurrency(){
+  document.querySelectorAll('.cur-switch button').forEach(b=>b.classList.toggle('on',b.dataset.cur===currency));
+  // pricing cards store their native INR price in data-inr
+  document.querySelectorAll('.p-num').forEach(el=>{
+    const inr=+el.dataset.inr;
+    el.textContent = currency==='INR'
+      ? '₹'+inr.toLocaleString('en-IN')
+      : '$'+(Math.round(inr/FX_INR/5)*5).toLocaleString();
+  });
+  document.querySelectorAll('.fx-note').forEach(el=>{
+    el.textContent='USD⇄INR shown at an indicative ₹'+FX_INR+'/US$ — final quotes are set per project.';
+  });
+  calc();
+}
+document.querySelectorAll('.cur-switch button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    if(currency===b.dataset.cur)return;
+    currency=b.dataset.cur;
+    try{localStorage.setItem('currency',currency);}catch(e){}
+    renderCurrency();
+  });
+});
+
 // init tools
-calc();
+renderCurrency();
 loadQ();
 </script>
 </body>
