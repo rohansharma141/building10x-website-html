@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Page not found — Building10X</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a0c0e">
+<script>
+  try{document.documentElement.dataset.theme=localStorage.getItem('theme')||'dark';}catch(e){}
+</script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0c0e'/><text x='50' y='70' font-size='62' font-family='Arial' font-weight='bold' fill='%23bdf84a' text-anchor='middle'>X</text></svg>">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+  :root, html[data-theme="dark"] {
+    --bg:#0a0c0e; --panel:#14191d; --line:#1e262c; --line-bright:#2c353b;
+    --ink:#eef2f3; --ink-dim:#9aa6ac; --ink-faint:#7c8890;
+    --accent:#bdf84a; --accent-glow:rgba(189,248,74,.22); --x-text:#0a0c0e;
+    --grid-rgb:255,255,255; --grid-op:.018;
+  }
+  html[data-theme="light"] {
+    --bg:#f4f3ef; --panel:#ffffff; --line:#e8e6df; --line-bright:#d8d5cc;
+    --ink:#16181c; --ink-dim:#5a5d63; --ink-faint:#6b6d67;
+    --accent:#1a6b3c; --accent-glow:rgba(26,107,60,.15); --x-text:#ffffff;
+    --grid-rgb:120,120,120; --grid-op:.035;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:'Sora',sans-serif;font-weight:300;line-height:1.6;
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:40px 22px;
+    transition:background .55s ease,color .55s ease;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(var(--grid-rgb),var(--grid-op)) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(var(--grid-rgb),var(--grid-op)) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 80%);
+  }
+  .inner{position:relative;z-index:2;max-width:560px}
+  .brand{display:inline-flex;align-items:center;text-decoration:none;margin-bottom:38px;
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.25rem;letter-spacing:-.02em;color:var(--ink)}
+  .brand .x{color:var(--x-text);background:var(--accent);padding:1px 7px;border-radius:5px;margin-left:1px;box-shadow:0 0 18px var(--accent-glow)}
+  .code{
+    font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:14px;
+  }
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(2rem,6vw,3rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:14px}
+  p{color:var(--ink-dim);margin-bottom:32px}
+  .links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.92rem;
+    padding:12px 22px;border-radius:9px;transition:all .25s;
+  }
+  .btn.solid{background:var(--accent);color:var(--x-text)}
+  .btn.solid:hover{transform:translateY(-2px);box-shadow:0 10px 28px var(--accent-glow)}
+  .btn.ghost{border:1px solid var(--line-bright);color:var(--ink-dim)}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--ink)}
+</style>
+</head>
+<body>
+  <div class="inner">
+    <a href="/" class="brand">Building10<span class="x">X</span></a>
+    <div class="code">Error 404 · page not found</div>
+    <h1>This page didn't ship.</h1>
+    <p>The link may be old, or the address mistyped. Everything that did ship is one click away.</p>
+    <div class="links">
+      <a class="btn solid" href="/">Back to home</a>
+      <a class="btn ghost" href="/blog/">Read Insights</a>
+      <a class="btn ghost" href="/#contact">Contact</a>
+    </div>
+  </div>
+</body>
+</html>

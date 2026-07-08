@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Insights — Field Notes on Software, Automation & AI | Building10X</title>
+<meta name="description" content="Practical thinking on software, automation, AI and growth — field notes from Building10X, written by the engineer who builds it.">
+<meta name="author" content="Rohan Sharma, Building10X">
+<meta name="theme-color" content="#0a0c0e">
+<link rel="canonical" href="https://building10x.com/blog/">
+<script>
+  try{document.documentElement.dataset.theme=localStorage.getItem('theme')||'dark';}catch(e){}
+</script>
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0c0e'/><text x='50' y='70' font-size='62' font-family='Arial' font-weight='bold' fill='%23bdf84a' text-anchor='middle'>X</text></svg>">
+
+<!-- OpenGraph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://building10x.com/blog/">
+<meta property="og:title" content="Insights — Field Notes on Software, Automation &amp; AI">
+<meta property="og:description" content="Practical thinking on software, automation, AI and growth — from the field.">
+<meta property="og:site_name" content="Building10X">
+<meta property="og:image" content="https://building10x.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Insights — Field Notes on Software, Automation &amp; AI | Building10X">
+<meta name="twitter:image" content="https://building10x.com/og-image.png">
+
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+<style>
+  :root, html[data-theme="dark"] {
+    --bg:#0a0c0e; --bg-soft:#0f1316; --panel:#14191d; --panel-2:#171d22;
+    --line:#1e262c; --line-bright:#2c353b;
+    --ink:#eef2f3; --ink-dim:#9aa6ac; --ink-faint:#7c8890;
+    --accent:#bdf84a; --accent-deep:#8fd400; --accent-2:#4ad6f8;
+    --accent-glow:rgba(189,248,74,.22);
+    --x-text:#0a0c0e;
+    --grid-rgb:255,255,255; --grid-op:.018;
+  }
+  html[data-theme="light"] {
+    --bg:#f4f3ef; --bg-soft:#ffffff; --panel:#ffffff; --panel-2:#fbfbf8;
+    --line:#e8e6df; --line-bright:#d8d5cc;
+    --ink:#16181c; --ink-dim:#5a5d63; --ink-faint:#6b6d67;
+    --accent:#1a6b3c; --accent-deep:#0f4f2a; --accent-2:#c2502a;
+    --accent-glow:rgba(26,107,60,.15);
+    --x-text:#ffffff;
+    --grid-rgb:120,120,120; --grid-op:.035;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'Sora',sans-serif; font-weight:300; line-height:1.6;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+    transition:background .55s ease, color .55s ease;
+    zoom:1.10;
+  }
+  @media(max-width:880px){ body{ zoom:1; } }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(var(--grid-rgb),var(--grid-op)) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(var(--grid-rgb),var(--grid-op)) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 80%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background:radial-gradient(ellipse 60% 50% at 78% -8%,var(--accent-glow),transparent 60%);
+  }
+  .wrap{max-width:1380px;margin:0 auto;padding:0 40px;position:relative;z-index:2}
+
+  header{
+    position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+    background:color-mix(in srgb,var(--bg) 82%,transparent);
+    border-bottom:1px solid var(--line);transition:all .55s
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+  .brand .mark{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:-.02em;display:flex;align-items:center;color:var(--ink)}
+  .brand .x{color:var(--x-text);background:var(--accent);padding:1px 7px;border-radius:5px;margin-left:1px;box-shadow:0 0 18px var(--accent-glow);font-weight:700;transition:all .55s}
+  .nav-right{display:flex;align-items:center;gap:30px}
+  .nav-links{display:flex;gap:28px}
+  .nav-links a{color:var(--ink-dim);text-decoration:none;font-size:.92rem;font-weight:400;transition:color .25s;position:relative}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a.current{color:var(--accent)}
+  .nav-cta{background:var(--accent);color:var(--x-text);text-decoration:none;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.86rem;padding:10px 20px;border-radius:8px;transition:all .25s}
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 30px var(--accent-glow)}
+  .toggle{width:52px;height:26px;border:1px solid var(--line-bright);border-radius:100px;position:relative;cursor:pointer;display:flex;align-items:center;padding:0 4px;background:var(--panel);transition:all .55s}
+  .toggle .ico{font-size:.8rem;line-height:1;opacity:.5;transition:opacity .3s}
+  .toggle .moon{margin-right:auto}
+  .toggle .sun{margin-left:auto}
+  html[data-theme="dark"] .toggle .moon{opacity:1}
+  html[data-theme="light"] .toggle .sun{opacity:1}
+  .toggle::after{content:"";width:18px;height:18px;background:var(--accent);border-radius:50%;position:absolute;top:50%;transform:translateY(-50%);left:4px;transition:left .35s cubic-bezier(.5,0,.2,1),background .55s}
+  html[data-theme="light"] .toggle::after{left:28px}
+  .menu-btn{display:none;background:transparent;border:1px solid var(--line-bright);border-radius:9px;color:var(--ink);font-size:1.4rem;line-height:1;cursor:pointer;width:46px;height:44px;align-items:center;justify-content:center}
+  .menu-btn:hover{border-color:var(--accent);color:var(--accent)}
+  @media(max-width:880px){
+    .menu-btn{display:flex}
+    .nav-right .nav-cta{display:none}
+    .nav-right{gap:14px;margin-right:14px}
+    .nav{gap:10px}
+    .nav-links{
+      display:flex;position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:0;
+      background:var(--bg-soft);border-bottom:1px solid var(--line);
+      padding:8px 0;
+      max-height:0;overflow:hidden;opacity:0;pointer-events:none;
+      transition:max-height .35s ease,opacity .3s ease,padding .3s ease;
+    }
+    header.mobile-open .nav-links{max-height:520px;opacity:1;pointer-events:auto;padding:14px 0}
+    .nav-links a{padding:13px 40px;font-size:1rem}
+  }
+
+  /* Page head */
+  .page-head{padding:72px 0 24px;max-width:900px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);
+    border:1px solid var(--line-bright);border-radius:100px;
+    padding:7px 16px;margin-bottom:20px;
+    background:color-mix(in srgb,var(--accent) 6%,transparent);
+  }
+  h1{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:clamp(2.2rem,4.5vw,3.6rem);line-height:1.08;letter-spacing:-.025em;
+    margin-bottom:16px;
+  }
+  .page-sub{color:var(--ink-dim);font-size:1.1rem;max-width:640px}
+
+  /* Post list */
+  .post-list{padding:44px 0 90px;display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1100px}
+  @media(max-width:880px){ .post-list{grid-template-columns:1fr} }
+  .post{
+    display:flex;flex-direction:column;
+    background:var(--panel);border:1px solid var(--line-bright);border-radius:16px;
+    padding:30px 30px 26px;text-decoration:none;color:inherit;
+    transition:transform .35s,border-color .35s;
+    position:relative;overflow:hidden;
+  }
+  .post:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .post .cat{
+    font-family:'JetBrains Mono',monospace;font-size:.66rem;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);
+    margin-bottom:14px;display:flex;gap:12px;flex-wrap:wrap;
+  }
+  .post .cat b{color:var(--accent);font-weight:500}
+  .post h2{
+    font-family:'Space Grotesk',sans-serif;font-weight:600;
+    font-size:1.35rem;line-height:1.28;letter-spacing:-.015em;
+    color:var(--ink);margin-bottom:12px;
+  }
+  .post p{color:var(--ink-dim);font-size:.95rem;margin-bottom:20px;flex:1}
+  .post .read{
+    font-family:'JetBrains Mono',monospace;font-size:.74rem;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
+  }
+  .post.soon{border-style:dashed;opacity:.75;pointer-events:none}
+  .post.soon .read{color:var(--ink-faint)}
+
+  footer{border-top:1px solid var(--line);padding:44px 0 28px}
+  .foot-inner{
+    display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;
+    color:var(--ink-faint);letter-spacing:.06em;
+  }
+  .foot-inner a{color:var(--ink-faint);text-decoration:none;transition:color .2s}
+  .foot-inner a:hover{color:var(--accent)}
+  .foot-links{display:flex;gap:22px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <a href="/" class="brand"><span class="mark">Building10<span class="x">X</span></span></a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="/#solutions">Solutions</a>
+          <a href="/#pricing">Pricing</a>
+          <a href="/#work">Work</a>
+          <a href="/#ai-automation">AI &amp; Automation</a>
+          <a href="/blog/" class="current">Insights</a>
+          <a href="/#about">About</a>
+          <a href="/#contact" class="nav-menu-cta">Start a project ↗</a>
+        </div>
+        <div class="toggle" id="toggle" role="button" tabindex="0" aria-label="Toggle theme">
+          <span class="ico moon">🌙</span>
+          <span class="ico sun">☀️</span>
+        </div>
+        <a href="/#contact" class="nav-cta">Start a project</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">≡</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="page-head">
+    <div class="eyebrow">◉ Insights · field notes</div>
+    <h1>Ideas worth sharing.</h1>
+    <p class="page-sub">Practical thinking on software, automation, AI and growth — written from the field by the engineer who builds it.</p>
+  </div>
+
+  <div class="post-list">
+    <a class="post" href="/blog/google-cloud-summit-builder-connect-2026.html">
+      <div class="cat"><b>Field notes</b><span>Google Cloud Summit 2026</span><span>·</span><span>June 2026</span><span>·</span><span>4 min read</span></div>
+      <h2>A day at Google Cloud Summit: Builder Connect — notes on agent architecture &amp; enterprise AI</h2>
+      <p>Technical takeaways from Delhi on agent architecture, grounding, reliability infrastructure — and the gap between what AI can do and what enterprises actually deploy.</p>
+      <span class="read">Read the post →</span>
+    </a>
+
+    <a class="post" href="/blog/ais-2026-summit-notes.html">
+      <div class="cat"><b>Field notes</b><span>ICAI Summit 2026</span><span>·</span><span>July 2026</span><span>·</span><span>7 min read</span></div>
+      <h2>Two days at ICAI's AI Innovation Summit — and the one shift most people missed</h2>
+      <p>Notes from Bharat Mandapam on AI in the CA profession — why workflow-first adoption beats the flashiest tool on the exhibition floor.</p>
+      <span class="read">Read the post →</span>
+    </a>
+
+    <div class="post soon">
+      <div class="cat"><b>Commerce &amp; trade-in</b></div>
+      <h2>The 3 places every trade-in system quietly breaks</h2>
+      <p>Pricing, grading, and payouts — where reverse-commerce systems fail in practice, and how to design around it.</p>
+      <span class="read">Coming soon →</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>© 2026 Building10X · Built to grow.</div>
+      <div class="foot-links">
+        <a href="/">Home</a>
+        <a href="/#work">Work</a>
+        <a href="/#contact">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const html = document.documentElement;
+  const toggle = document.getElementById('toggle');
+  toggle.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e) {}
+  });
+  toggle.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle.click(); }
+  });
+
+  const header = document.querySelector('header');
+  const menuBtn = document.getElementById('menuBtn');
+  if (menuBtn) menuBtn.addEventListener('click', () => {
+    header.classList.toggle('mobile-open');
+    menuBtn.textContent = header.classList.contains('mobile-open') ? '×' : '≡';
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      header.classList.remove('mobile-open');
+      if (menuBtn) menuBtn.textContent = '≡';
+    });
+  });
+</script>
+
+</body>
+</html>
