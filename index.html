@@ -8,8 +8,12 @@
 <meta name="author" content="Building10X">
 <meta name="theme-color" content="#0a0c0e">
 <link rel="canonical" href="https://building10x.com/">
+<script>
+  /* Apply saved theme before first paint (shared with blog pages via localStorage) */
+  try{document.documentElement.dataset.theme=localStorage.getItem('theme')||'dark';}catch(e){document.documentElement.dataset.theme='dark';}
+</script>
 
-<!-- Favicon (replace with real files when ready; emoji fallback works immediately) -->
+<!-- Favicon -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0c0e'/><text x='50' y='70' font-size='62' font-family='Arial' font-weight='bold' fill='%23bdf84a' text-anchor='middle'>X</text></svg>">
 
 <!-- OpenGraph (LinkedIn / WhatsApp / FB share preview) -->
@@ -18,13 +22,16 @@
 <meta property="og:title" content="Building10X — AI-Accelerated Software, Automation & AI">
 <meta property="og:description" content="We build the software that 10× your growth — any industry, delivered fast through AI-accelerated engineering. 15+ years of enterprise experience.">
 <meta property="og:site_name" content="Building10X">
-<!-- REPLACE_ME: add a real share image (1200x630px) and uncomment:
-<meta property="og:image" content="https://building10x.com/og-image.png"> -->
+<meta property="og:image" content="https://building10x.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Building10X — AI-accelerated software, automation and AI. Built to grow.">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Building10X — AI-Accelerated Software, Automation & AI">
 <meta name="twitter:description" content="We build the software that 10× your growth — any industry, AI-accelerated.">
+<meta name="twitter:image" content="https://building10x.com/og-image.png">
 
 <!-- LocalBusiness / Organization structured data (helps Google understand the business) -->
 <script type="application/ld+json">
@@ -36,17 +43,38 @@
   "url": "https://building10x.com",
   "email": "hello@building10x.com",
   "telephone": "+91-9650247027",
-  "areaServed": ["IN", "GB", "AE", "US", "CA", "EU"],
+  "areaServed": ["IN", "AU", "GB", "AE", "US", "CA", "EU"],
   "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressRegion": "Delhi", "addressCountry": "IN" },
-  "founder": { "@type": "Person", "name": "Rohan" },
+  "founder": { "@type": "Person", "name": "Rohan Sharma", "url": "https://building10x.com" },
+  "sameAs": ["https://www.linkedin.com/company/building10x"],
   "slogan": "Built to grow.",
   "knowsAbout": ["Software Development", "Automation", "Artificial Intelligence", "E-commerce", "Trade-In Systems", "Real Estate Technology", "Web Development", "SEO"]
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- FAQ structured data (mirrors the on-page FAQ section) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "How much does a project cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Websites for small businesses typically start around ₹20,000, and a website-plus-growth package around ₹45,000. Larger or custom builds (platforms, commerce, AI tools) are scoped individually. You'll always get a clear, fixed quote before any work begins — no hourly surprises." } },
+    { "@type": "Question", "name": "How long does it take?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Much faster than traditional development. Because I build with AI-accelerated engineering, a professional website can go live in days, and even larger builds ship in a fraction of the usual timeline. You'll get a realistic date in the planning step." } },
+    { "@type": "Question", "name": "Do you work with clients outside India?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. I work with clients across the UK, EU, Middle East, US, Canada and Australia, as well as locally in Delhi NCR. Most work happens remotely, with clear communication throughout." } },
+    { "@type": "Question", "name": "I'm not technical. Can you still help?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Absolutely — most clients aren't technical, and that's the point. You explain your business and your goal in plain language; I handle everything technical and explain things without jargon. You work directly with me, not a call centre." } },
+    { "@type": "Question", "name": "What's the difference between automation and AI?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Automation removes effort — repetitive tasks happen by themselves (data syncing, alerts, follow-ups). AI adds capability — things you couldn't do before (intelligent agents, content at scale, prediction). Most businesses benefit from both; I'll help you figure out which solves your problem." } },
+    { "@type": "Question", "name": "Do you offer ongoing support?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. After launch you can take a support or improvement plan, or just reach out when you need changes. Your site and systems are yours — I'm here when you want to grow them further." } }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
   /* ============================================================
      THEME SYSTEM — dark (default) + light, both hand-tuned
@@ -670,7 +698,7 @@
   }
 </style>
 </head>
-<body data-theme="dark">
+<body>
 
 <header>
   <div class="wrap">
@@ -687,7 +715,7 @@
           <a href="#specializations" class="nav-re"><span class="dot"></span>Real Estate</a>
           <a href="#contact" class="nav-menu-cta">Start a project ↗</a>
         </div>
-        <div class="toggle" id="toggle" role="button" aria-label="Toggle theme">
+        <div class="toggle" id="toggle" role="button" tabindex="0" aria-label="Toggle theme">
           <span class="ico moon">🌙</span>
           <span class="ico sun">☀️</span>
           <span class="knob" id="knob">
@@ -943,12 +971,12 @@
           </div>
 
           <div class="field">
-            <label>Traditional team day-rate <b id="rate-val">$550 / day</b></label>
+            <label for="rate">Traditional team day-rate <b id="rate-val">$550 / day</b></label>
             <input type="range" id="rate" min="300" max="1000" step="25" value="550">
           </div>
 
           <div class="field" style="margin-bottom:0">
-            <label>Team size (traditional) <b id="team-val">4 people</b></label>
+            <label for="team">Team size (traditional) <b id="team-val">4 people</b></label>
             <input type="range" id="team" min="2" max="8" step="1" value="4">
           </div>
         </div>
@@ -1102,7 +1130,6 @@
       <h2 class="sec-title">Clear pricing. No surprises.</h2>
       <p class="sec-intro">Transparent packages for websites &amp; local businesses. Bigger or custom builds are scoped individually — let's talk.</p>
     </div>
-    <!-- REPLACE_ME: adjust the prices below to your real numbers -->
     <div class="price-grid">
       <div class="price reveal d1">
         <div class="p-name">Starter Website</div>
@@ -1237,6 +1264,7 @@
         </div>
         <input type="hidden" name="_subject" value="New Building10X enquiry">
         <button type="submit">Send message ↗</button>
+        <div style="font-size:.75rem;color:var(--ink-faint);margin-top:10px">By sending this form you agree to our <a href="/privacy.html" style="color:var(--ink-dim)">Privacy Policy</a>.</div>
         <div class="cf-status" id="cfStatus"></div>
       </form>
 
@@ -1350,6 +1378,7 @@
         <a href="#pricing">Pricing</a>
         <a href="#process">How it works</a>
         <a href="#work">Selected work</a>
+        <a href="/blog/">Insights</a>
         <a href="#faq">FAQ</a>
         <a href="#about">About</a>
       </div>
@@ -1358,15 +1387,15 @@
         <a href="mailto:hello@building10x.com">hello@building10x.com</a>
         <a href="https://wa.me/919650247027" target="_blank" rel="noopener">WhatsApp · +91 96502 47027</a>
         <a href="#contact">Start a project</a>
-        <!-- REPLACE_ME: paste your real LinkedIn URL -->
         <a href="https://www.linkedin.com/company/building10x" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 Building10X. All rights reserved.</span>
       <div class="fb-tags">
+        <a href="/privacy.html" style="color:inherit;text-decoration:none">Privacy</a>
+        <a href="/terms.html" style="color:inherit;text-decoration:none">Terms</a>
         <span>Built. Grow. Repeat.</span>
-        <span>Building your next 10X</span>
       </div>
     </div>
   </div>
@@ -1384,10 +1413,15 @@
 
 <script>
 /* ============ THEME TOGGLE ============ */
-const body=document.body, toggle=document.getElementById('toggle');
+const root=document.documentElement, toggle=document.getElementById('toggle');
 toggle.addEventListener('click',()=>{
-  body.dataset.theme = body.dataset.theme==='dark' ? 'light' : 'dark';
+  const next = root.dataset.theme==='dark' ? 'light' : 'dark';
+  root.dataset.theme=next;
+  try{localStorage.setItem('theme',next);}catch(e){}
   drawChart(); // recolor chart on theme flip
+});
+toggle.addEventListener('keydown',e=>{
+  if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle.click();}
 });
 
 /* ============ MOBILE MENU ============ */
@@ -1512,12 +1546,19 @@ function applyDomain(d,withCount){
 }
 
 /* ============ INIT ============ */
+// pause the console cycle when the tab is hidden or the console is scrolled off-screen
+let consoleInView=true;
+const consoleWrap=document.querySelector('.console-wrap');
+if(consoleWrap&&'IntersectionObserver' in window){
+  new IntersectionObserver(es=>{consoleInView=es[0].isIntersecting;}).observe(consoleWrap);
+}
 function init(){
   drawChart();
   applyDomain(domains[0],true);
   revealRows();
   // cycle domains every 4.2s
   setInterval(()=>{
+    if(document.hidden||!consoleInView)return;
     dIdx=(dIdx+1)%domains.length;
     applyDomain(domains[dIdx],true);
     // regenerate a fresh curve that trends up overall but with real, visible pullbacks
@@ -1653,7 +1694,6 @@ if(sendBtn)sendBtn.addEventListener('click',async()=>{
   const estimate=`Project: ${proj?proj.textContent:'?'} | Traditional: ${document.getElementById('trad-cost').textContent} / ${document.getElementById('trad-time').textContent} | Building10X: ${document.getElementById('b10x-cost').textContent} / ${document.getElementById('b10x-time').textContent} | Saving: ${document.getElementById('sv-big').textContent}`;
   conf.textContent=' Sending…';
   try{
-    // REPLACE_ME: same Formspree form ID as the contact form
     const res=await fetch('https://formspree.io/f/mwvzwznp',{
       method:'POST',headers:{'Accept':'application/json'},
       body:(()=>{const f=new FormData();f.append('email',em);f.append('_subject','New ROI Calculator lead');f.append('message','ROI estimate request — '+estimate);return f;})()
