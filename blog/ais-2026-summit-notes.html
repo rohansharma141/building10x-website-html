@@ -43,13 +43,13 @@
     "url": "https://building10x.com"
   },
   "image": "https://building10x.com/blog/blog-images/rohan-at-ais-2026.jpg",
+  "datePublished": "2026-07-07",
+  "dateModified": "2026-07-08",
   "mainEntityOfPage": "https://building10x.com/blog/ais-2026-summit-notes.html"
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/fonts.css">
 
 <style>
   /* ============================================================
@@ -118,6 +118,7 @@
   .nav-links{display:flex;gap:28px}
   .nav-links a{color:var(--ink-dim);text-decoration:none;font-size:.92rem;font-weight:400;transition:color .25s;position:relative}
   .nav-links a:hover{color:var(--ink)}
+  .nav-links a.current{color:var(--accent)}
   .nav-cta{background:var(--accent);color:var(--x-text);text-decoration:none;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.86rem;padding:10px 20px;border-radius:8px;transition:all .25s}
   .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 30px var(--accent-glow)}
   .toggle{width:52px;height:26px;border:1px solid var(--line-bright);border-radius:100px;position:relative;cursor:pointer;display:flex;align-items:center;padding:0 4px;background:var(--panel);transition:all .55s}
@@ -483,10 +484,11 @@
           <a href="/#pricing">Pricing</a>
           <a href="/#work">Work</a>
           <a href="/#ai-automation">AI &amp; Automation</a>
+          <a href="/#insights" class="current">Insights</a>
           <a href="/#about">About</a>
           <a href="/#contact" class="nav-menu-cta">Start a project ↗</a>
         </div>
-        <div class="toggle" id="toggle" role="button" aria-label="Toggle theme">
+        <div class="toggle" id="toggle" role="button" tabindex="0" aria-label="Toggle theme">
           <span class="ico moon">🌙</span>
           <span class="ico sun">☀️</span>
         </div>
@@ -525,7 +527,7 @@
 <!-- ============ HERO IMAGE ============ -->
 <div class="hero-img">
   <div class="hero-frame" style="--hero-bg:url('./blog-images/rohan-at-ais-2026.jpg')">
-    <img src="./blog-images/rohan-at-ais-2026.jpg" alt="Rohan Sharma at ICAI's AI Innovation Summit 2026, standing beside the AiS 2026 backdrop at Bharat Mandapam, New Delhi.">
+    <img src="./blog-images/rohan-at-ais-2026.jpg" width="1882" height="2000" fetchpriority="high" decoding="async" alt="Rohan Sharma at ICAI's AI Innovation Summit 2026, standing beside the AiS 2026 backdrop at Bharat Mandapam, New Delhi.">
   </div>
 </div>
 
@@ -558,7 +560,7 @@
     <!-- IN-BODY IMAGE SLOT #1 -->
     <figure class="body-img">
       <div class="body-frame" style="--body-bg:url('./blog-images/ais-2026-session.jpg')">
-        <img src="./blog-images/ais-2026-session.jpg" alt="A keynote session at ICAI's AI Innovation Summit 2026, with a slide reading '3 Steps for Leveraging AI (as a non-tech person)' — Ask Better Questions and Data Privacy — visible behind the speaker, with a full audience of Chartered Accountants at Bharat Mandapam.">
+        <img src="./blog-images/ais-2026-session.jpg" width="1500" height="2000" loading="lazy" decoding="async" alt="A keynote session at ICAI's AI Innovation Summit 2026, with a slide reading '3 Steps for Leveraging AI (as a non-tech person)' — Ask Better Questions and Data Privacy — visible behind the speaker, with a full audience of Chartered Accountants at Bharat Mandapam.">
       </div>
       <figcaption>A keynote in progress — the room was packed, and the framing of AI as "non-tech first" set the tone for the day.</figcaption>
     </figure>
@@ -630,9 +632,11 @@
       <div>© 2026 Building10X · Built to grow.</div>
       <div class="foot-links">
         <a href="/">Home</a>
-        <a href="/#solutions">Solutions</a>
+        <a href="/blog/">Insights</a>
         <a href="/#work">Work</a>
         <a href="/#contact">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
       </div>
     </div>
   </div>
@@ -649,6 +653,9 @@
     const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
     try { localStorage.setItem('theme', next); } catch(e) {}
+  });
+  toggle.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle.click(); }
   });
 
   // Mobile menu

@@ -47,13 +47,12 @@
   },
   "image": "https://building10x.com/blog/blog-images-gcs/hero-rohan-builder-connect.jpg",
   "datePublished": "2026-06-06",
+  "dateModified": "2026-07-08",
   "mainEntityOfPage": "https://building10x.com/blog/google-cloud-summit-builder-connect-2026.html"
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/fonts.css">
 
 <style>
   /* Theme tokens — mirrors main site exactly */
@@ -368,7 +367,7 @@
           <a href="/#about">About</a>
           <a href="/#contact" class="nav-menu-cta">Start a project ↗</a>
         </div>
-        <div class="toggle" id="toggle" role="button" aria-label="Toggle theme">
+        <div class="toggle" id="toggle" role="button" tabindex="0" aria-label="Toggle theme">
           <span class="ico moon">🌙</span>
           <span class="ico sun">☀️</span>
         </div>
@@ -405,7 +404,7 @@
 <!-- ============ HERO ============ -->
 <div class="hero-img">
   <div class="hero-frame" style="--hero-bg:url('./blog-images-gcs/hero-rohan-builder-connect.jpg')">
-    <img src="./blog-images-gcs/hero-rohan-builder-connect.jpg" alt="Rohan Sharma at Google Cloud Summit: Builder Connect India 2026, standing beneath the wooden Builder Connect signage at Yashobhoomi, Delhi.">
+    <img src="./blog-images-gcs/hero-rohan-builder-connect.jpg" width="1536" height="2000" fetchpriority="high" decoding="async" alt="Rohan Sharma at Google Cloud Summit: Builder Connect India 2026, standing beneath the wooden Builder Connect signage at Yashobhoomi, Delhi.">
   </div>
 </div>
 
@@ -426,7 +425,7 @@
     <!-- IMAGE 2 — panel discussion -->
     <figure class="body-img">
       <div class="body-frame" style="--body-bg:url('./blog-images-gcs/panel-assistants-to-agents.jpg')">
-        <img src="./blog-images-gcs/panel-assistants-to-agents.jpg" alt="A panel discussion at Google Cloud Summit: Builder Connect 2026 with five industry speakers on stage, backdrop featuring India Gate imagery and Google Cloud branding.">
+        <img src="./blog-images-gcs/panel-assistants-to-agents.jpg" width="1500" height="2000" loading="lazy" decoding="async" alt="A panel discussion at Google Cloud Summit: Builder Connect 2026 with five industry speakers on stage, backdrop featuring India Gate imagery and Google Cloud branding.">
       </div>
       <figcaption>The industry conversation is shifting from “what can this model do” to “how do we ship agents that don't quietly break in production.”</figcaption>
     </figure>
@@ -454,7 +453,7 @@
     <!-- IMAGE 4 — Swiss Property Search demo screen -->
     <figure class="body-img">
       <div class="body-frame" style="--body-bg:url('./blog-images-gcs/swiss-property-search-demo.jpg')">
-        <img src="./blog-images-gcs/swiss-property-search-demo.jpg" alt="Swiss Property Search demo screen at Google Cloud Summit, showing a natural-language query — 'Show me family apartments in Zurich with a nice view up to 16k' — converted into generated SQL for AlloyDB using embeddings and semantic similarity, with the agent's reasoning visible on screen.">
+        <img src="./blog-images-gcs/swiss-property-search-demo.jpg" width="1125" height="2000" loading="lazy" decoding="async" alt="Swiss Property Search demo screen at Google Cloud Summit, showing a natural-language query — 'Show me family apartments in Zurich with a nice view up to 16k' — converted into generated SQL for AlloyDB using embeddings and semantic similarity, with the agent's reasoning visible on screen.">
       </div>
       <figcaption>Swiss Property Search — natural-language in, safe grounded SQL out. Grounding is SQL-shaped: embeddings and semantic similarity in the WHERE clause, not brittle prompt chains.</figcaption>
     </figure>
@@ -472,7 +471,7 @@
     <!-- IMAGE 5 — Sandeep Cashyap keynote -->
     <figure class="body-img">
       <div class="body-frame" style="--body-bg:url('./blog-images-gcs/sandeep-cashyap-keynote.jpg')">
-        <img src="./blog-images-gcs/sandeep-cashyap-keynote.jpg" alt="Sandeep Cashyap, Head of Startups Business at Google Cloud, on stage at the Google Cloud Summit: Builder Connect 2026 keynote, with his headshot and title projected on the main screen.">
+        <img src="./blog-images-gcs/sandeep-cashyap-keynote.jpg" width="1500" height="2000" loading="lazy" decoding="async" alt="Sandeep Cashyap, Head of Startups Business at Google Cloud, on stage at the Google Cloud Summit: Builder Connect 2026 keynote, with his headshot and title projected on the main screen.">
       </div>
       <figcaption>Sandeep Cashyap on the startup track — one of several sessions that reinforced the same thesis: the tooling is here; the deployment culture is still catching up.</figcaption>
     </figure>
@@ -534,9 +533,11 @@
       <div>© 2026 Building10X · Built to grow.</div>
       <div class="foot-links">
         <a href="/">Home</a>
-        <a href="/#solutions">Solutions</a>
-        <a href="/#insights">Insights</a>
+        <a href="/blog/">Insights</a>
+        <a href="/#work">Work</a>
         <a href="/#contact">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
       </div>
     </div>
   </div>
@@ -551,6 +552,9 @@
     const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
     try { localStorage.setItem('theme', next); } catch(e) {}
+  });
+  toggle.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle.click(); }
   });
 
   const header = document.querySelector('header');
